@@ -1,4 +1,16 @@
 <?php
+    function trasTime($name){
+    $times = ['Grêmio FBPA'=>'Grêmio','Ceará SC'=> 'Ceará','CR Vasco da Gama'=>'Vasco',
+              'Botafogo FR'=>'Botafogo','Cruzeiro EC'=>'Cruzeiro','Santos FC'=>'Santos',
+              'EC Bahia'=>'Bahia','CA Paranaense'=>'Atletico Pr','SC Corinthians Paulista'=>'Corinthians',
+              'Chapecoense AF'=>'Chapecoense','Paraná Clube'=>'Paraná','EC Vitória'=>'Vitória',
+              'CR Flamengo'=>'Flamengo','América FC (MG)'=>'America Mg', 'CA Mineiro'=>'Atletico Mg',
+              'São Paulo FC'=>'São Paulo','SE Palmeiras'=>'Palmeiras','Fluminense FC'=>'Fluminense',
+              'SC Recife'=>'Sport','SC Internacional'=>'Internacional'];
+              return $times[$name];
+    return $name;
+
+    }
     
     $uri = 'http://api.football-data.org/v2/competitions/BSA/matches/?matchday=1';
     $reqPrefs['http']['method'] = 'GET';
@@ -17,10 +29,10 @@
     }
     foreach ($matches->matches as $key => $value) {?>
     <tr>
-        <td><span class="time"></span> <span class="name"><?=$value->homeTeam->name?></span></td>
+        <td><span class="time"></span> <span class="name"><?=trasTime($value->homeTeam->name)?></span></td>
         <td><input placeholder="    0" id="placar1"  type="text" class="placar1" value='0'></td>
         <td><input placeholder="    0" id="placar2" type="text" class="placar2" value='0'></td>
-        <td><span class="time"></span> <span class="name"><?=$value->awayTeam->name?></span></td>
+        <td><span class="time"></span> <span class="name"><?=trasTime($value->awayTeam->name)?></span></td>
     </tr>
     <?php }
     /*<?=$value->score->fullTime->homeTeam?>
